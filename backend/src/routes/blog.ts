@@ -62,6 +62,7 @@ blogRouter.post("/", async (c) => {
 				title: body.title,
 				content: body.content,
 				authorId: Number(authorId),
+				createdAt: new Date(),
 			},
 		});
 		return c.json({

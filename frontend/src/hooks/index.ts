@@ -6,10 +6,13 @@ export interface Blog {
 	content: string;
 	title: string;
 	id: number;
+	createdAt: Date;
+	updatedAt: Date | null;
 	author: {
 		name: string;
 	};
 }
+
 export interface Author {
 	id: number;
 	name: string;
@@ -42,6 +45,7 @@ export const useBlog = ({ id }: { id: string }) => {
 		author,
 	};
 };
+
 export const useBlogs = () => {
 	const [loading, setLoading] = useState(true);
 	const [blogs, setBlogs] = useState<Blog[]>([]);
