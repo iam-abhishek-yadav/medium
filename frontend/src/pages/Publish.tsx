@@ -1,12 +1,12 @@
-import { Appbar } from "../components/Appbar";
-import axios from "axios";
-import { BACKEND_URL } from "../config";
-import { useNavigate } from "react-router-dom";
-import { ChangeEvent, useState } from "react";
+import { Appbar } from '../components/Appbar';
+import axios from 'axios';
+import { BACKEND_URL } from '../config';
+import { useNavigate } from 'react-router-dom';
+import { ChangeEvent, useState } from 'react';
 
 export const Publish = () => {
-	const [title, setTitle] = useState("");
-	const [description, setDescription] = useState("");
+	const [title, setTitle] = useState('');
+	const [description, setDescription] = useState('');
 	const navigate = useNavigate();
 
 	return (
@@ -30,6 +30,7 @@ export const Publish = () => {
 					/>
 					<button
 						onClick={async () => {
+							if (title === '' || description === '') return;
 							const response = await axios.post(
 								`${BACKEND_URL}/api/v1/blog`,
 								{
@@ -38,7 +39,7 @@ export const Publish = () => {
 								},
 								{
 									headers: {
-										Authorization: localStorage.getItem("token"),
+										Authorization: localStorage.getItem('token'),
 									},
 								}
 							);
